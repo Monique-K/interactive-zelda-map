@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
 import './App.scss';
 
+const mapImg = require('./images/Hyrule_map.png');
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <img alt="" src={require('./images/castleTown.png')} />
+
+        <div className="title-section">Interactive Map of Hyrule</div>
+
+        <div className="main">
+          <div className="left-section">
+            <div className="map-container">
+              <img src={mapImg} alt="Hyrule map" className="map"></img>
+            </div>
+            <div className="info-container"></div>
+          </div>
+
+          <div className="right-section">
+          </div>
+        </div>
+
       </div>
     );
   }
