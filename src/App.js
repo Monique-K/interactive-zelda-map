@@ -46,15 +46,16 @@ class App extends Component {
   }
 
   showLocation = (place) => {
-    console.log(place)
-    this.setState(this.defaultState)
-    this.setState({[place.id]: "", currentLocation: place})
-  }
+    console.log(this.state[place.id])
+    if (this.state[place.id] === "hidden") {
+      this.setState(this.defaultState)
+      this.setState({[place.id]: "", currentLocation: place})
+    } else {
+      this.setState({[place.id]: "hidden", currentLocation: {}})
+    }
+  } 
   
   render() {
-
-    // const hidden = this.state.hidden ? "hidden" : "";
-
     return (
       <div className="App">
 
@@ -63,20 +64,69 @@ class App extends Component {
         <div className="main">
           <div className="left-section">
             <div className="map-container">
-              <img src={mapImg} alt="Hyrule map" className="map"></img>
-              <img src={require('./images/castleTown.png')} alt="Hyrule map" className={`map-item ${this.state.castleTown}`} id="castleTown"></img>
-              <img src={require('./images/deathMountain.png')} alt="Hyrule map" className={`map-item ${this.state.mountain}`} id="mountain"></img>
-              <img src={require('./images/dekuTree.png')} alt="Hyrule map" className={`map-item ${this.state.tree}`} id="tree"></img>
-              <img src={require('./images/field.png')} alt="Hyrule map" className={`map-item ${this.state.field}`} id="field"></img>
-              <img src={require('./images/gerudoValley.png')} alt="Hyrule map" className={`map-item ${this.state.gerudo}`} id="gerudo"></img>
-              <img src={require('./images/hyruleCastle.png')} alt="Hyrule map" className={`map-item ${this.state.castle}`} id="castle"></img>
-              <img src={require('./images/kokiriForest.png')} alt="Hyrule map" className={`map-item ${this.state.kokiri}`} id="kokiri"></img>
-              <img src={require('./images/kakariko.png')} alt="Hyrule map" className={`map-item ${this.state.kakariko}`} id="kokiri"></img>
-              <img src={require('./images/lakeHylia.png')} alt="Hyrule map" className={`map-item ${this.state.lake}`} id="lake"></img>
-              <img src={require('./images/lonLon.png')} alt="Hyrule map" className={`map-item ${this.state.ranch}`} id="ranch"></img>
-              <img src={require('./images/zorasDomain.png')} alt="Hyrule map" className={`map-item ${this.state.domain}`} id="domain"></img>
+              <img src={mapImg} 
+                alt="Hyrule map" 
+                className="map">
+              </img>
+              <img src={require('./images/castleTown.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.castleTown}`} 
+                id="castleTown">
+              </img>
+              <img src={require('./images/deathMountain.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.mountain}`} 
+                id="mountain">
+              </img>
+              <img src={require('./images/dekuTree.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.tree}`} 
+                id="tree">
+              </img>
+              <img src={require('./images/field.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.field}`} 
+                id="field">
+              </img>
+              <img src={require('./images/gerudoValley.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.gerudo}`} 
+                id="gerudo">
+              </img>
+              <img src={require('./images/hyruleCastle.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.castle}`} 
+                id="castle">
+              </img>
+              <img src={require('./images/kokiriForest.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.kokiri}`} 
+                id="kokiri">
+              </img>
+              <img src={require('./images/kakariko.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.kakariko}`} 
+                id="kokiri">
+              </img>
+              <img src={require('./images/lakeHylia.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.lake}`} 
+                id="lake">
+              </img>
+              <img src={require('./images/lonLon.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.ranch}`} 
+                id="ranch">
+              </img>
+              <img src={require('./images/zorasDomain.png')} 
+                alt="Hyrule map" 
+                className={`map-item ${this.state.domain}`} 
+                id="domain">
+              </img>
             </div>
-            <div className="info-container"></div>
+            <div className="info-container">
+              {this.state.currentLocation.description}
+            </div>
           </div>
 
           <div className="right-section">
