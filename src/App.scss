@@ -57,13 +57,19 @@
     }
 
     .info-container {
-      padding: 0.25rem;
+      padding: 2rem;
+      padding-top: 12rem;
       height: 5rem;
-      width: 657px;
-      text-align: left;
-      font-size: 1rem;
+      width: 651px;
+      text-align: center;
+      font-size: 1.5rem;
       font-weight: 550;
-      background-color: #DCDAAF;
+      a {
+        color: rgb(48, 105, 37) !important; 
+        &:hover {
+          color: rgb(61, 53, 22)
+        }
+      }
     }
   }
 
@@ -90,6 +96,9 @@
       width: 100%;
       text-align: left;
       margin-bottom: 0.25rem;
+      &:hover {
+        color: rgb(48, 105, 37);
+      }
     }
   }
 

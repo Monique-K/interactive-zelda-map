@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { locations } from './locations';
+import { fetchMe } from './fetching'
 import './App.scss';
 
 const mapImg = require('./images/Hyrule_map.png');
@@ -8,6 +9,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
+      // allLocations: [],
       currentLocation: {},
       castleTown: "hidden",
       mountain: "hidden",
@@ -37,6 +39,14 @@ class App extends Component {
     domain: "hidden"
   }
 
+  componentWillMount = () => {
+    // locations[0].description = fetchMe()
+    // console.log("feched:?", fetchMe())
+    // this.setState({
+    //   allLocations: locations,
+    // })
+  }
+
   listLocations = () =>  {
     let locArray = []
     locations.map(place => {
@@ -46,10 +56,9 @@ class App extends Component {
   }
 
   showLocation = (place) => {
-    console.log(this.state[place.id])
     if (this.state[place.id] === "hidden") {
       this.setState(this.defaultState)
-      this.setState({[place.id]: "", currentLocation: place})
+      this.setState({ [place.id]: "", currentLocation: place })
     } else {
       this.setState({[place.id]: "hidden", currentLocation: {}})
     }
@@ -144,9 +153,9 @@ export default App;
 
 /* 
 ---To Do--
-- map on left, names on right, 
-- hover on name to highlight area
-- on hover, bottom fills with wiki info
+- click on name to highlight area
+- on click, bottom fills with wiki info
+- on name click, change state to keep name green
 
 
 
